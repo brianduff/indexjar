@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "BUILD": "bazel",
+  },
+  "files.exclude": {
+    "bazel-*/": true,
+  }
+}
