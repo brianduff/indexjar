@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.stream.*;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.HashMultimap;
+import com.google.common.collect.LinkedHashMultimap;
 import java.nio.charset.StandardCharsets;
 import java.util.zip.*;
 
@@ -20,7 +20,7 @@ public class IndexJar {
   }
 
   private void generate() throws IOException {
-    Multimap<String, String> pathToMatchingJars = HashMultimap.create();
+    Multimap<String, String> pathToMatchingJars = LinkedHashMultimap.create();
     for (String jarFile : entries) {
       File file = new File(jarFile);
       if (file.isFile()) {
@@ -30,10 +30,19 @@ public class IndexJar {
         }
       }
     }
+
+    try (PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)))) {
+      for (String key : pathToMatchingJars.keySet()) {
+        pw.println(key);
+        for (String value : pathToMatchingJars.get(key)) {
+          pw.println("  " + value);
+        }
+      }
+    }
   }
 
   private Set<String> getDirectoriesContainingClasses(ZipFile zipFile) {
-    Set<String> directories = new HashSet<>();
+    Set<String> directories = new LinkedHashSet<>();
     Enumeration<? extends ZipEntry> entries = zipFile.entries();
     while (entries.hasMoreElements()) {
       ZipEntry entry = entries.nextElement();
