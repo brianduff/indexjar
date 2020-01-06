@@ -9,3 +9,9 @@ java_binary(
     main_class = "org.dubh.indexjar.IndexJar",
     runtime_deps = [":indexjar"],
 )
+
+java_binary(
+    name = "TestIndexReader",
+    main_class = "org.dubh.indexjar.IndexReader",
+    runtime_deps = [":indexjar"],
+)
