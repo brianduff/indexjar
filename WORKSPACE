@@ -28,9 +28,12 @@ maven_install(
     ],
 )
 
+ENGAGE_TAG = "0.3"
+ENGAGE_SHA = "aaaecccae46f32e56b420fcc1bbf7ba2d978da7e25be5a340cf123605e21c98c"
+
 http_archive(
     name = "engage",
-    urls = ["https://github.com/brianduff/engage/archive/1.0.zip"],
-    sha256 = "277eea10f97c647df13330626b61cf6f795832913693cfe3a30555e45eb97f1c",
-    strip_prefix = "engage-1.0"
+    urls = ["https://github.com/brianduff/engage/archive/%s.zip" % ENGAGE_TAG],
+    sha256 = ENGAGE_SHA,
+    strip_prefix = "engage-%s" % ENGAGE_TAG
 )
