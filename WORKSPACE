@@ -18,9 +18,19 @@ load("@rules_jvm_external//:defs.bzl", "maven_install")
 maven_install(
     artifacts = [
         "com.google.guava:guava:19.0",
+        "org.json:json:20180813",
+        "com.github.spullara.mustache.java:compiler:0.9.6",
+        "org.hjson:hjson:3.0.0",
     ],
     repositories = [
         "https://maven.google.com",
         "https://repo1.maven.org/maven2",
     ],
+)
+
+http_archive(
+    name = "engage",
+    urls = ["https://github.com/brianduff/engage/archive/1.0.zip"],
+    sha256 = "277eea10f97c647df13330626b61cf6f795832913693cfe3a30555e45eb97f1c",
+    strip_prefix = "engage-1.0"
 )
