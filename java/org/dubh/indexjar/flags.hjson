@@ -1,0 +1,10 @@
+{
+  properties: [
+    {
+      name: "count"
+      description: "The number of jars to create"
+      type: "int"
+      required: true
+    }
+  ]
+}
