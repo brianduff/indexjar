@@ -6,5 +6,11 @@
       type: "int"
       required: true
     }
+    {
+      name: "outdir"
+      description: "The directory in which to generate"
+      type: "string"
+      required: true
+    }
   ]
 }
